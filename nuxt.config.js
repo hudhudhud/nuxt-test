@@ -39,7 +39,7 @@ export default {
     '@/plugins/axios',
     '@/plugins/vue-inject.js',
     '@/plugins/context-inject.js',
-    '@/plugins/combined-inject.js'
+    '@/plugins/combined-inject.js',
   ],
 
   /*

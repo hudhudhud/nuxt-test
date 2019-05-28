@@ -20,28 +20,34 @@
       <div v-for="(item,i) in list">{{i}}、{{item.email}}</div>
       <nuxt-link :to="'?page='+item" v-for="item in list1"  >  {{item}}  </nuxt-link>
       <img src="/a.gif" alt="">
+      <i-button >Click me!</i-button>
     </div>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+
 export default {
   components: {
-    Logo
+    Logo,
   },
   data(){
     return {
       list:[1,2],
       page:1,
-      list1:[1,2,3,4,5]
+      list1:[1,2,3,4,5],
+      imgsArr:[{src: "http://via.placeholder.com/100x200", href: "https://www.baidu.com", info: ""},{src: "http://via.placeholder.com/100x200", href: "https://www.baidu.com", info: ""},{src: "http://via.placeholder.com/100x200", href: "https://www.baidu.com", info: ""},
+        {src: "http://via.placeholder.com/100x300", href: "https://www.baidu.com", info: ""},{src: "http://via.placeholder.com/100x500", href: "https://www.baidu.com", info: ""},{src: "http://via.placeholder.com/100x200", href: "https://www.baidu.com", info: ""},
+        {src: "http://via.placeholder.com/100x100", href: "https://www.baidu.com", info: ""},{src: "http://via.placeholder.com/100x300", href: "https://www.baidu.com", info: ""},{src: "http://via.placeholder.com/100x100", href: "https://www.baidu.com", info: ""},
+        {src: "http://via.placeholder.com/100x600", href: "https://www.baidu.com", info: ""}]
     }
   },
   //在服务端调用，因此network中看不到
   //Nuxt.js 会将 asyncData 返回的数据融合组件 data 方法返回的数据一并返回给当前组件
    asyncData(context){
-     context.app.myInjectedFunction('context!')
-     context.app.$myInjectedCommonFunction('works in async111')
+     // context.app.myInjectedFunction('context!')
+     // context.app.$myInjectedCommonFunction('works in async111')
       return context.$axios.$get('getTableList',{page:context.query.page})
             .then(res=>{
               return {list:res.data.list}
@@ -53,11 +59,18 @@ export default {
   async mounted(){
    // let data = await this.$axios.get('getTableList')
    //  console.log(2222,data)
-    this.$myInjectedFunction('test')
-    this.$myInjectedCommonFunction('works in mounted222')
+   //  this.$myInjectedFunction('test')
+   //  this.$myInjectedCommonFunction('works in mounted222')
+    console.log(1111111111111111,this.imgsArr)
   },
   watchQuery: ['page'],
   methods:{
+    getData(){
+      setTimeout(()=>{
+        this.imgsArr.concat(this.imgsArr)
+      },2000)
+
+    }
   }
 }
 </script>
