@@ -40,6 +40,7 @@ export default {
     '@/plugins/vue-inject.js',
     '@/plugins/context-inject.js',
     '@/plugins/combined-inject.js',
+    {src: '@/plugins/vue-waterfull-easy',ssr:false}
   ],
 
   /*
@@ -57,7 +58,7 @@ export default {
   },
   proxy: {
     '/api': {
-      target:'https://www.easy-mock.com/mock/5c19ec74bde1915e93ca1a92/example/',
+      target:'https://cnodejs.org/api/v1/',//'https://www.easy-mock.com/mock/5c19ec74bde1915e93ca1a92/example/',
       pathRewrite: {
         '^/api': '',
         changeOrigin: true // 表示是否跨域
