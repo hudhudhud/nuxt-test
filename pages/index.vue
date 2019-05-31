@@ -19,9 +19,11 @@
       <!--</div>-->
       <section class="content" ref="content">
          <div v-for="(item,i) in list" class="item" ref="col"  :style="{width:waterfallW+'px',left:item.left+'px',top:item.top+'px'}">
-            <p>{{item.title}}</p>
-            <span>{{item.author?item.author.loginname:''}}</span>
-            <img :src="item.author?item.author.avatar_url:''" alt="" >
+           <nuxt-link :to="'/detail/'+item.id">
+             <p>{{item.title}}</p>
+             <span>{{item.author?item.author.loginname:''}}</span>
+             <img :src="item.author?item.author.avatar_url:''" alt="" >
+           </nuxt-link>
          </div>
       </section>
       <!--<nuxt-link :to="'?page='+item" v-for="item in list1"  >  {{item}}  </nuxt-link>-->
@@ -114,7 +116,6 @@ export default {
            }
            this.list[i].top = top;
            this.list[i].left = left;
-           console.log(domHeight,top)
          }
        },
 

@@ -40,7 +40,7 @@ export default {
     '@/plugins/vue-inject.js',
     '@/plugins/context-inject.js',
     '@/plugins/combined-inject.js',
-    {src: '@/plugins/vue-waterfull-easy',ssr:false}
+    {src:'@/plugins/vue-waterfall.js',ssr:false}
   ],
 
   /*
